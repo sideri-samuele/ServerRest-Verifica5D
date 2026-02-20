@@ -8,7 +8,7 @@ package serverrest;
  *
  * @author delfo
  */
-public class DaFareService {
+public class ServerService {
     
     /**
      * Esegue l'operazione matematica richiesta

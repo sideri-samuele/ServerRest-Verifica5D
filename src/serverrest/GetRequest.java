@@ -8,16 +8,16 @@ package serverrest;
  *
  * @author delfo
  */
-public class DaFareRequest {
+public class GetRequest {
     private String giocata;
     private String numero;
     
     // Costruttore vuoto necessario per GSON
-    public DaFareRequest() {
+    public GetRequest() {
     }
     
     // Costruttore con parametri  
-    public DaFareRequest(String giocata, String numero) {
+    public GetRequest(String giocata, String numero) {
         this.giocata = giocata;
         this.numero = numero;
     }
@@ -44,6 +44,6 @@ public class DaFareRequest {
 
     @Override
     public String toString() {
-        return "DaFareRequest{" + "giocata=" + giocata + ", numero=" + numero + '}';
+        return "giocata:" + giocata + " numero:" + numero;
     }
 }
