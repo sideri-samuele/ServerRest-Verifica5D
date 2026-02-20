@@ -8,7 +8,7 @@ package serverrest;
  *
  * @author delfo
  */
-public class ServerService {
+public class RouletteService {
     
     /**
      * Esegue l'operazione matematica richiesta
@@ -24,11 +24,13 @@ public class ServerService {
     public int n = request.getNumero();
     public String gioc = request.getGiocata();
     public boolean vitt;
+    public String mess;
     
     public boolean logicaDiCalcolo() 
             throws IllegalArgumentException {
         // Controllo se i parametri passati sono validi
-                if (!parametriValidi()) {
+        if (parametriValidi()) {
+        } else {
             throw new IllegalArgumentException("Giocata non può essere diversa da PARI o DISPARI");
         }
         
@@ -57,9 +59,13 @@ public class ServerService {
     }
 
     // Metodo di validazione dei parametri (da implementare)
-    private static boolean parametriValidi()
-    {
+    private boolean parametriValidi()
+    {/**/
+        if ("PARI".equals(request.getGiocata()) || "DISPARI".equals(request.getGiocata()){
+            return true;
+        }else {
+            return false;
+        }
         
-        return false;
     }
 }

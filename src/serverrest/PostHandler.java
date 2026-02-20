@@ -64,7 +64,8 @@ public class PostHandler implements HttpHandler {
             }
             
             // Chiama la logica di calcolo DA FARE
-           
+           RouletteService service = new RouletteService();
+               service.logicaDiCalcolo();
             
             // Crea l'oggetto risposta DA FARE
            GetResponse response = new GetResponse();

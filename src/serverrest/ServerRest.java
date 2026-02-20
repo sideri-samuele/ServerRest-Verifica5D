@@ -31,7 +31,7 @@ public class ServerRest {
     public static void avviaServer(int porta) {
         try {
             // Crea il server sulla porta specificata
-            HttpServer server = HttpServer.create(new InetSocketAddress(porta), 0);
+            HttpServer server = HttpServer.create(new InetSocketAddress(porta), 8080);
             
             // Registra gli handler per gli endpoint
            
@@ -79,8 +79,8 @@ public class ServerRest {
         info.put("tecnologia", "Java + GSON");
         
         Map endpoints = new HashMap<>();
-        endpoints.put("POST", "/api/calcola/post");
-        endpoints.put("GET", "/api/calcola/get?operando1=X&operando2=Y&operatore=OP");
+        endpoints.put("POST", "/api/roulette/paridispari/post");
+        endpoints.put("GET", "/api/roulette/paridispari/get?giocata=DISPARI&numero=12");
         info.put("endpoints", endpoints);
         
         Map operatori = new HashMap<>();

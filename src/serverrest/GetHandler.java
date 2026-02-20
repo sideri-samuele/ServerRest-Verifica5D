@@ -31,6 +31,8 @@ public class GetHandler implements HttpHandler {
             .setPrettyPrinting()
             .create();
     
+    public boolean risultato;
+    
     @Override
     public void handle(HttpExchange exchange) throws IOException {
         
@@ -55,7 +57,8 @@ public class GetHandler implements HttpHandler {
             
             
             // Esegue la logica di calcolo
-            double risultato = ServerService.logicaDiCalcolo();
+            RouletteService service = new RouletteService();
+            service.logicaDiCalcolo();
             
             // Crea l'oggetto risposta
             GetResponse response = new GetResponse(

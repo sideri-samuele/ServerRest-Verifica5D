@@ -18,7 +18,7 @@ public class GetResponse {
     }
     
     // Costruttore con parametri
-    public GetResponse(String giocata, String numero, boolean vittoria) {
+    public GetResponse(String giocata, String numero, boolean vittoria, String operazione) {
         this.giocata = giocata;
         this.numero = numero;
         this.vittoria = vittoria;
