@@ -39,6 +39,7 @@ public class DaFareService {
     // Metodo di validazione dei parametri (da implementare)
     private static boolean parametriValidi()
     {
+        
         return false;
     }
 }
