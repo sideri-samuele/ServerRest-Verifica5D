@@ -34,7 +34,7 @@ public class ServerRest {
             HttpServer server = HttpServer.create(new InetSocketAddress(porta), 8080);
             
             // Registra gli handler per gli endpoint
-           
+            
             
             // Endpoint di benvenuto
             server.createContext("/", ServerRest::gestisciBenvenuto);

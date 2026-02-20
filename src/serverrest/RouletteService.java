@@ -61,7 +61,7 @@ public class RouletteService {
     // Metodo di validazione dei parametri (da implementare)
     private boolean parametriValidi()
     {/**/
-        if ("PARI".equals(request.getGiocata()) || "DISPARI".equals(request.getGiocata()){
+        if ("PARI".equals(request.getGiocata()) || "DISPARI".equals(request.getGiocata())){
             return true;
         }else {
             return false;
