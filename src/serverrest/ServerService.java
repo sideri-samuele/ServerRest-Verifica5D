@@ -21,8 +21,11 @@ public class ServerService {
      */
     
     GetRequest request = new GetRequest();
+    public int n = request.getNumero();
+    public String gioc = request.getGiocata();
+    public boolean vitt;
     
-    public static double logicaDiCalcolo() 
+    public boolean logicaDiCalcolo() 
             throws IllegalArgumentException {
         // Controllo se i parametri passati sono validi
                 if (!parametriValidi()) {
@@ -30,13 +33,27 @@ public class ServerService {
         }
         
         try {
-            
-            
+            switch(gioc){
+                case "PARI":
+                    if(n % 2 == 0){
+                        vitt = true;
+                    }else if(n % 2 != 0 || n == 0) {
+                        vitt = false;
+                    }
+                break;
+                
+                case "DISPARI":
+                    if(n % 2 == 0 || n == 0){
+                        vitt = false;
+                    }else {
+                        vitt = true;
+                    }
+            }
         } catch (Exception e) {
             throw new IllegalArgumentException(
                     "Opzione non valida. Opzione deve essere DA FARE");
         }
-        return 0; // Placeholder, da sostituire con il risultato della logica di calcolo
+        return vitt; // Placeholder, da sostituire con il risultato della logica di calcolo
     }
 
     // Metodo di validazione dei parametri (da implementare)
