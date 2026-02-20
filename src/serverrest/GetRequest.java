@@ -9,15 +9,15 @@ package serverrest;
  * @author delfo
  */
 public class GetRequest {
-    private String giocata;
-    private String numero;
+    public String giocata;
+    public int numero;
     
     // Costruttore vuoto necessario per GSON
     public GetRequest() {
     }
     
     // Costruttore con parametri  
-    public GetRequest(String giocata, String numero) {
+    public GetRequest(String giocata, int numero) {
         this.giocata = giocata;
         this.numero = numero;
     }
@@ -27,12 +27,12 @@ public class GetRequest {
         return giocata;
     }
     
-    public String getNumero() {
+    public int getNumero() {
         return numero;
     }
     
     // Setter
-    public void setNumero(String numero) {
+    public void setNumero(int numero) {
         this.numero = numero;
     }
     

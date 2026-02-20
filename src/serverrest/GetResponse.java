@@ -9,9 +9,9 @@ package serverrest;
  * @author delfo
  */
 public class GetResponse {
-    private String giocata;
-    private String numero;
-    private boolean vittoria;
+    public String giocata;
+    public String numero;
+    public boolean vittoria;
     
     // Costruttore vuoto necessario per GSON
     public GetResponse() {

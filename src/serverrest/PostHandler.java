@@ -67,8 +67,7 @@ public class PostHandler implements HttpHandler {
            
             
             // Crea l'oggetto risposta DA FARE
-           GetResponse response = new GetResponse(
-            );
+           GetResponse response = new GetResponse();
             
             // GSON converte automaticamente l'oggetto Java in JSON
             String jsonRisposta = gson.toJson(response);

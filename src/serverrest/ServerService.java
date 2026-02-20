@@ -19,15 +19,18 @@ public class ServerService {
      * @return 
      * @throws IllegalArgumentException se ...
      */
+    
+    GetRequest request = new GetRequest();
+    
     public static double logicaDiCalcolo() 
             throws IllegalArgumentException {
-        
         // Controllo se i parametri passati sono validi
                 if (!parametriValidi()) {
-            throw new IllegalArgumentException("Operatore non può essere vuoto");
+            throw new IllegalArgumentException("Giocata non può essere diversa da PARI o DISPARI");
         }
         
         try {
+            
             
         } catch (Exception e) {
             throw new IllegalArgumentException(
