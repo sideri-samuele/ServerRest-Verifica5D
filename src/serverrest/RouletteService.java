@@ -20,52 +20,36 @@ public class RouletteService {
      * @throws IllegalArgumentException se ...
      */
     
-    GetRequest request = new GetRequest();
-    public int n = request.getNumero();
-    public String gioc = request.getGiocata();
-    public boolean vitt;
-    public String mess;
-    
-    public boolean logicaDiCalcolo() 
-            throws IllegalArgumentException {
+    public boolean logicaDiCalcolo(String giocata, String numero) throws IllegalArgumentException {
         // Controllo se i parametri passati sono validi
-        if (parametriValidi()) {
+        if (!parametriValidi(giocata, numero)) {
         } else {
-            throw new IllegalArgumentException("Giocata non può essere diversa da PARI o DISPARI");
+            throw new IllegalArgumentException("Giocata non può essere diversa da PARI, DISPARI o mancante");
         }
         
         try {
-            switch(gioc){
-                case "PARI":
-                    if(n % 2 == 0){
-                        vitt = true;
-                    }else if(n % 2 != 0 || n == 0) {
-                        vitt = false;
-                    }
-                break;
-                
-                case "DISPARI":
-                    if(n % 2 == 0 || n == 0){
-                        vitt = false;
-                    }else {
-                        vitt = true;
-                    }
+            int n = Integer.parseInt(numero);
+            if (n == 0) {
+                return false;
+            }
+            
+            if (giocata.equalsIgnoreCase("PARI")){
+                return n % 2 == 0;
+            }
+            
+            if (giocata.equalsIgnoreCase("DISPARI")){
+                return n % 2 != 0;
+            }else {
+                throw new Exception();
             }
         } catch (Exception e) {
-            throw new IllegalArgumentException(
-                    "Opzione non valida. Opzione deve essere DA FARE");
+            throw new IllegalArgumentException("Opzione non valida.");
         }
-        return vitt; // Placeholder, da sostituire con il risultato della logica di calcolo
     }
 
     // Metodo di validazione dei parametri (da implementare)
-    private boolean parametriValidi()
-    {/**/
-        if ("PARI".equals(request.getGiocata()) || "DISPARI".equals(request.getGiocata())){
-            return true;
-        }else {
-            return false;
-        }
-        
+    private boolean parametriValidi(String giocata, String numero)
+    {
+        return giocata != null && !giocata.isEmpty() && numero != null && !numero.isEmpty();
     }
 }
