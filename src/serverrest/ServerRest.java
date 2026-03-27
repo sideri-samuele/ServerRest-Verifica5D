@@ -12,6 +12,7 @@ import com.google.gson.GsonBuilder;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 
@@ -52,7 +53,7 @@ public class ServerRest {
             System.out.println();
             System.out.println("Endpoint disponibili:");
             System.out.println("  - POST: http://localhost:" + porta + "/api/roulette/paridispari/post");
-            System.out.println("  - GET:  http://localhost:" + porta + "/api/roulette/paridispari/get?giocata=PARI&numero=12");
+            System.out.println("  - GET:  http://localhost:" + porta + "/api/roulette/paridispari/get?giocata=DISPARI&numero=12");
             System.out.println("  - Info: http://localhost:" + porta + "/");
             System.out.println();
             System.out.println();
@@ -74,9 +75,9 @@ public class ServerRest {
     private static void gestisciBenvenuto(HttpExchange exchange) throws IOException {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         
-        Map info = new HashMap<>();
+        Map<String, Object> info = new LinkedHashMap<>();
         info.put("messaggio", "Benvenuto alla Calcolatrice REST API");
-        info.put("versione", "2.0.0");
+        info.put("versione", "1.0.0");
         info.put("tecnologia", "Java + GSON");
         
         Map endpoints = new HashMap<>();
@@ -84,16 +85,18 @@ public class ServerRest {
         endpoints.put("GET", "/api/roulette/paridispari/get?giocata=DISPARI&numero=12");
         info.put("endpoints", endpoints);
         
-        Map operatori = new HashMap<>();
-        operatori.put("somma", "SOMMA o +");
-        operatori.put("sottrazione", "SOTTRAZIONE o -");
-        operatori.put("moltiplicazione", "MOLTIPLICAZIONE o * o X");
-        operatori.put("divisione", "DIVISIONE o /");
-        info.put("operatori_supportati", operatori);
+        Map<String, Object> regole = new LinkedHashMap<>();
+        regole.put("Giocate_Valide", "PARI, DISPARI");
+        regole.put("Regola_dello_0", "Con il numero 0 si perde sempre");
+        regole.put("moltiplicazione", "MOLTIPLICAZIONE o * o X");
+        regole.put("divisione", "DIVISIONE o /");
+        info.put("regole_roulette", regole);
         
         String jsonRisposta = gson.toJson(info);
         
         exchange.getResponseHeaders().set("Content-Type", "application/json; charset=UTF-8");
+        exchange.getResponseHeaders().set("Access-Control-Allow-Origin", "*");
+        
         byte[] bytes = jsonRisposta.getBytes();
         exchange.sendResponseHeaders(200, bytes.length);
         exchange.getResponseBody().write(bytes);
