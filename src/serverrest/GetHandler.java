@@ -48,21 +48,20 @@ public class GetHandler implements HttpHandler {
             
             // Validazione parametri
             if (validazioneParametri(parametri)) {
-                inviaErrore(exchange, 400, 
-                    "Parametri mancanti. Necessari: giocata, numero, vincita");
+                inviaErrore(exchange, 400, "Parametri mancanti. Necessari: giocata, numero, vincita");
                 return;
             }
             
             // Parsing dei valori
-            
+            String giocata = parametri.get("giocata");
+            String numero = parametri.get("numero");
             
             // Esegue la logica di calcolo
             RouletteService service = new RouletteService();
-            service.logicaDiCalcolo();
+            service.logicaDiCalcolo(giocata, numero);
             
             // Crea l'oggetto risposta
-            GetResponse response = new GetResponse(
-            );
+            GetResponse response = new GetResponse(giocata, numero, risultato, "");
             
             // GSON converte automaticamente l'oggetto Java in JSON
             String jsonRisposta = gson.toJson(response);
@@ -80,8 +79,9 @@ public class GetHandler implements HttpHandler {
 
     // Validazione dei parametri (da implementare)
     private boolean validazioneParametri(Map<String, String> parametri) {
-        
-        return false;
+        return !parametri.containsKey("giocata") || !parametri.containsKey("numero") 
+               || parametri.get("giocata").trim().isEmpty() 
+               || parametri.get("numero").trim().isEmpty();
     }
     
     /**
