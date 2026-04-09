@@ -58,7 +58,7 @@ public class GetHandler implements HttpHandler {
             
             // Esegue la logica di calcolo
             RouletteService service = new RouletteService();
-            service.logicaDiCalcolo(giocata, numero);
+            boolean esito = service.logicaDiCalcolo(giocata, numero);
             
             // Crea l'oggetto risposta
             GetResponse response = new GetResponse(giocata, numero, risultato, "");

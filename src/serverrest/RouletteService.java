@@ -23,7 +23,6 @@ public class RouletteService {
     public boolean logicaDiCalcolo(String giocata, String numero) throws IllegalArgumentException {
         // Controllo se i parametri passati sono validi
         if (!parametriValidi(giocata, numero)) {
-        } else {
             throw new IllegalArgumentException("Giocata non può essere diversa da PARI, DISPARI o mancante");
         }
         

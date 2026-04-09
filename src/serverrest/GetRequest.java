@@ -10,14 +10,14 @@ package serverrest;
  */
 public class GetRequest {
     public String giocata;
-    public int numero;
+    public String numero;
     
     // Costruttore vuoto necessario per GSON
     public GetRequest() {
     }
     
     // Costruttore con parametri  
-    public GetRequest(String giocata, int numero) {
+    public GetRequest(String giocata, String numero) {
         this.giocata = giocata;
         this.numero = numero;
     }
@@ -27,12 +27,12 @@ public class GetRequest {
         return giocata;
     }
     
-    public int getNumero() {
+    public String getNumero() {
         return numero;
     }
     
     // Setter
-    public void setNumero(int numero) {
+    public void setNumero(String numero) {
         this.numero = numero;
     }
     

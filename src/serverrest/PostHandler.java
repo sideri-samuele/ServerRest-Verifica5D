@@ -65,10 +65,12 @@ public class PostHandler implements HttpHandler {
             
             // Chiama la logica di calcolo DA FARE
            RouletteService service = new RouletteService();
-               service.logicaDiCalcolo();
+               service.logicaDiCalcolo(request.getGiocata(), request.getNumero());
             
             // Crea l'oggetto risposta DA FARE
            GetResponse response = new GetResponse();
+           request.getGiocata();
+           request.getNumero();
             
             // GSON converte automaticamente l'oggetto Java in JSON
             String jsonRisposta = gson.toJson(response);
@@ -86,8 +88,8 @@ public class PostHandler implements HttpHandler {
     
     // Validazione dei parametri (da implementare)
     private boolean validazioneParametri(GetRequest request) {
-        
-        return false;
+        return request.getGiocata() == null || request.getGiocata().isEmpty() ||
+               request.getNumero() == null || request.getNumero().isEmpty();
     }
 
     /**
